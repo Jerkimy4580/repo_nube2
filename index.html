@@ -20,17 +20,19 @@
             min-height: 100vh;
         }
 
-        /* Header & Nav */
+        /* Header & Nav Responsive */
         .header {
             background-color: #1b4332;
             color: white;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-container {
@@ -43,16 +45,25 @@
             font-size: 2rem;
         }
 
+        .logo-text {
+            font-size: 1.4rem;
+        }
+
         .logo-text span {
             font-size: 0.8rem;
             display: block;
             color: #52b788;
         }
 
+        nav {
+            width: auto;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -60,6 +71,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -71,24 +83,30 @@
             flex: 1;
         }
 
-        /* Banner */
+        /* Banner Responsive */
         .hero-banner {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .hero-banner h2 {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 4vw, 3rem);
             margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-banner p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         .hero-buttons {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
             gap: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -98,6 +116,9 @@
             cursor: pointer;
             font-weight: bold;
             text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            width: auto;
         }
 
         .btn-primary {
@@ -119,19 +140,20 @@
             padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
             color: #1b4332;
             margin-bottom: 30px;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
         }
 
-        /* Cards & Grid */
+        /* Cards & Grid Responsive */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -141,11 +163,13 @@
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         .card img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
             border-radius: 6px;
             margin-bottom: 15px;
@@ -153,6 +177,7 @@
 
         .badge {
             display: inline-block;
+            align-self: flex-start;
             background: #d8f3dc;
             color: #1b4332;
             padding: 4px 8px;
@@ -162,7 +187,7 @@
             margin-bottom: 10px;
         }
 
-        /* Categorías Filtro */
+        /* Categorías Filtro Responsive */
         .category-filter {
             display: flex;
             justify-content: center;
@@ -178,6 +203,8 @@
             color: #2d6a4f;
             border-radius: 20px;
             cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         .filter-btn.active, .filter-btn:hover {
@@ -192,10 +219,6 @@
             gap: 30px;
         }
 
-        @media (max-width: 768px) {
-            .contact-container { grid-template-columns: 1fr; }
-        }
-
         form {
             display: flex;
             flex-direction: column;
@@ -203,6 +226,7 @@
         }
 
         form input, form textarea {
+            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -223,9 +247,62 @@
             margin-top: auto;
         }
 
+        .social-links {
+            margin-top: 10px;
+        }
+
         .social-links a {
             color: #52b788;
             text-decoration: none;
+            margin: 0 5px;
+        }
+
+        /* MEDIA QUERIES PARA ADAPTABILIDAD TOTAL */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner {
+                padding: 60px 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filter {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .section {
+                padding: 25px 15px;
+            }
         }
     </style>
 </head>
@@ -235,7 +312,7 @@
     <header class="header">
         <div class="logo-container">
             <span class="logo-icon">🌿</span>
-            <h1 class="logo-text">EcoZoo <span>Naturaleza Viva</span></h1>
+            <h1 class="logo-text">EcoZooPuce <span>Naturaleza Viva</span></h1>
         </div>
         <nav>
             <ul class="nav-links">
@@ -248,10 +325,8 @@
         </nav>
     </header>
 
-    <!-- Contenedor Principal donde se cargan los componentes -->
-    <main id="app-content">
-        <!-- El contenido se inyecta dinámicamente desde JavaScript -->
-    </main>
+    <!-- Contenedor Principal -->
+    <main id="app-content"></main>
 
     <!-- Pie de página -->
     <footer class="footer">
@@ -264,160 +339,30 @@
     <!-- Lógica JavaScript -->
     <script>
         const animalsData = [
-            // --- MAMÍFEROS (4) ---
-            {
-                name: "León",
-                category: "Mamíferos",
-                image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=500&q=80",
-                description: "El gran felino conocido como el rey de la selva.",
-                habitat: "Sabana africana",
-                features: "Melena densa en machos, caza social en manada.",
-                diet: "Carnívoro"
-            },
-            {
-                name: "Elefante",
-                category: "Mamíferos",
-                image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=500&q=80",
-                description: "El mamífero terrestre más grande del mundo.",
-                habitat: "Bosques y sabanas",
-                features: "Trompa multifuncional y colmillos de marfil.",
-                diet: "Herbívoro"
-            },
-            {
-                name: "Jirafa",
-                category: "Mamíferos",
-                image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?auto=format&fit=crop&w=500&q=80",
-                description: "El animal más alto de la Tierra.",
-                habitat: "Praderas africanas",
-                features: "Cuello extremadamente largo y patrón único de manchas.",
-                diet: "Herbívoro"
-            },
-            {
-                name: "Tigre",
-                category: "Mamíferos",
-                image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=500&q=80",
-                description: "Superdepredador de pelaje anaranjado con rayas negras.",
-                habitat: "Bosques densos y selvas",
-                features: "Excelente nadador y cazador solitario.",
-                diet: "Carnívoro"
-            },
+            // --- MAMÍFEROS ---
+            { name: "León", category: "Mamíferos", image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=500&q=80", description: "El gran felino conocido como el rey de la selva.", habitat: "Sabana africana", features: "Melena densa en machos, caza social en manada.", diet: "Carnívoro" },
+            { name: "Elefante", category: "Mamíferos", image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=500&q=80", description: "El mamífero terrestre más grande del mundo.", habitat: "Bosques y sabanas", features: "Trompa multifuncional y colmillos de marfil.", diet: "Herbívoro" },
+            { name: "Jirafa", category: "Mamíferos", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?auto=format&fit=crop&w=500&q=80", description: "El animal más alto de la Tierra.", habitat: "Praderas africanas", features: "Cuello extremadamente largo y patrón único de manchas.", diet: "Herbívoro" },
+            { name: "Tigre", category: "Mamíferos", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=500&q=80", description: "Superdepredador de pelaje anaranjado con rayas negras.", habitat: "Bosques densos y selvas", features: "Excelente nadador y cazador solitario.", diet: "Carnívoro" },
 
-            // --- AVES (4) ---
-            {
-                name: "Águila Real",
-                category: "Aves",
-                image: "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=500&q=80",
-                description: "Una de las aves de presa más impresionantes.",
-                habitat: "Montañas y acantilados",
-                features: "Visión agudísima y garras poderosas.",
-                diet: "Carnívoro"
-            },
-            {
-                name: "Flamenco",
-                category: "Aves",
-                image: "https://media.istockphoto.com/id/616135474/es/foto/flamencos-en-el-lago-kenia-%C3%A1frica.jpg?s=1024x1024&w=is&k=20&c=2FgWJEaiQrLtqUEnGoTApNV8_yaD_qby12whD1tjdEQ=",
-                description: "Ave acuática conocida por su característico color rosado.",
-                habitat: "Lagos salobres y humedales",
-                features: "Pico curvo adaptado para filtrar alimento y cuello esbelto.",
-                diet: "Filtrador (crustáceos y algas)"
-            },
-            {
-                name: "Búho Real",
-                category: "Aves",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj7sPccjR10nmkMZvCb_onGtCEtmnQEAyW1rAqVtKbVkhAzYL9bXKyUQQ&s=10",
-                description: "Rapaz nocturna de mirada penetrante.",
-                habitat: "Bosques, zonas rocosas y tundras",
-                features: "Vuelo totalmente silencioso y penachos en las orejas.",
-                diet: "Carnívoro"
-            },
-            {
-                name: "Tucán",
-                category: "Aves",
-                image: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?auto=format&fit=crop&w=500&q=80",
-                description: "Ave tropical famosa por su pico largo y colorido.",
-                habitat: "Selvas tropicales",
-                features: "Pico ligero de queratina y plumaje de colores vivos.",
-                diet: "Frugívoro (frutas e insectos)"
-            },
+            // --- AVES ---
+            { name: "Águila Real", category: "Aves", image: "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=500&q=80", description: "Una de las aves de presa más impresionantes.", habitat: "Montañas y acantilados", features: "Visión agudísima y garras poderosas.", diet: "Carnívoro" },
+            { name: "Flamenco", category: "Aves", image: "https://media.istockphoto.com/id/616135474/es/foto/flamencos-en-el-lago-kenia-%C3%A1frica.jpg?s=1024x1024&w=is&k=20&c=2FgWJEaiQrLtqUEnGoTApNV8_yaD_qby12whD1tjdEQ=", description: "Ave acuática conocida por su característico color rosado.", habitat: "Lagos salobres y humedales", features: "Pico curvo adaptado para filtrar alimento.", diet: "Filtrador (crustáceos y algas)" },
+            { name: "Búho Real", category: "Aves", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj7sPccjR10nmkMZvCb_onGtCEtmnQEAyW1rAqVtKbVkhAzYL9bXKyUQQ&s=10", description: "Rapaz nocturna de mirada penetrante.", habitat: "Bosques y zonas rocosas", features: "Vuelo totalmente silencioso.", diet: "Carnívoro" },
+            { name: "Tucán", category: "Aves", image: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?auto=format&fit=crop&w=500&q=80", description: "Ave tropical famosa por su pico largo y colorido.", habitat: "Selvas tropicales", features: "Pico ligero de queratina y plumaje vivo.", diet: "Frugívoro" },
 
-            // --- REPTILES (4) ---
-            {
-                name: "Tortuga Marina",
-                category: "Reptiles",
-                image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=500&q=80",
-                description: "Reptil ancestral que migra miles de kilómetros.",
-                habitat: "Arrecifes y océanos abiertos",
-                features: "Caparazón hidrodinámico y grandes aletas.",
-                diet: "Omnívoro (medusas, algas)"
-            },
-            {
-                name: "Cocodrilo",
-                category: "Reptiles",
-                image: "https://images.unsplash.com/photo-1525382455947-f319bc05fb35?auto=format&fit=crop&w=500&q=80",
-                description: "Gran reptil semiacuático con una mordida devastadora.",
-                habitat: "Ríos, pantanos y zonas costeras",
-                features: "Piel escamosa y dura, ojos y fosas nasales superiores.",
-                diet: "Carnívoro"
-            },
-            {
-                name: "Camaleón",
-                category: "Reptiles",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdPAr5eUlrF9iF5v1S5VuKDE10gj6QJ-7Mel7P57ONORE5n7nhSM49_76O&s=10",
-                description: "Pequeño reptil famoso por su capacidad de cambiar de color.",
-                habitat: "Bosques tropicales y matorrales",
-                features: "Ojos con movimiento independiente y lengua retráctil larga.",
-                diet: "Insectívoro"
-            },
-            {
-                name: "Iguana Verde",
-                category: "Reptiles",
-                image: "https://www.shutterstock.com/image-photo/young-green-iguana-perched-on-260nw-2700496977.jpg",
-                description: "Gran lagarto arborícola nativo de América Central y del Sur.",
-                habitat: "Copas de los árboles cerca del agua",
-                features: "Cresta dorsal de espinas y cola larga para defensa.",
-                diet: "Herbívoro"
-            },
+            // --- REPTILES ---
+            { name: "Tortuga Marina", category: "Reptiles", image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=500&q=80", description: "Reptil ancestral que migra miles de kilómetros.", habitat: "Arrecifes y océanos abiertos", features: "Caparazón hidrodinámico y grandes aletas.", diet: "Omnívoro" },
+            { name: "Cocodrilo", category: "Reptiles", image: "https://images.unsplash.com/photo-1525382455947-f319bc05fb35?auto=format&fit=crop&w=500&q=80", description: "Gran reptil semiacuático con mordida poderosa.", habitat: "Ríos, pantanos y zonas costeras", features: "Piel escamosa y dura.", diet: "Carnívoro" },
+            { name: "Camaleón", category: "Reptiles", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdPAr5eUlrF9iF5v1S5VuKDE10gj6QJ-7Mel7P57ONORE5n7nhSM49_76O&s=10", description: "Reptil famoso por cambiar de color.", habitat: "Bosques tropicales", features: "Ojos con movimiento independiente.", diet: "Insectívoro" },
+            { name: "Iguana Verde", category: "Reptiles", image: "https://www.shutterstock.com/image-photo/young-green-iguana-perched-on-260nw-2700496977.jpg", description: "Gran lagarto arborícola nativo de América.", habitat: "Copas de los árboles cerca del agua", features: "Cresta dorsal de espinas y cola larga.", diet: "Herbívoro" },
 
-            // --- ANIMALES ACUÁTICOS (4) ---
-            {
-                name: "Delfín",
-                category: "Acuáticos",
-                image: "https://images.unsplash.com/photo-1570481662006-a3a1374699e8?auto=format&fit=crop&w=500&q=80",
-                description: "Mamífero acuático highly inteligente.",
-                habitat: "Océanos y mares",
-                features: "Comunicación mediante ecolocalización y saltos acrobáticos.",
-                diet: "Piscívoro"
-            },
-            {
-                name: "Tiburón Blanco",
-                category: "Acuáticos",
-                image: "https://images.unsplash.com/photo-1560275619-4662e36fa65c?auto=format&fit=crop&w=500&q=80",
-                description: "El depredador marino de gran tamaño más emblemático.",
-                habitat: "Aguas templadas de todos los océanos",
-                features: "Esqueleto de cartílago y múltiples filas de dientes aserrados.",
-                diet: "Carnívoro"
-            },
-            {
-                name: "Manta Raya",
-                category: "Acuáticos",
-                image: "https://capuchino.mx/wp-content/uploads/2022/12/Rayas-aguila.jpg",
-                description: "Gigante pacífico del océano que 'vuela' en el agua.",
-                habitat: "Aguas tropicales y subtropicales",
-                features: "Cuerpo aplanado con aletas pectorales triangulares gigantes.",
-                diet: "Filtrador (plancton)"
-            },
-            {
-                name: "Pez Payaso",
-                category: "Acuáticos",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXiO58aVTR0Gy-AGtmCNJJ-qn4luiqDNrk0Dmo0Gobdq98CKLCzK6tF_th&s=10",
-                description: "Pequeño pez de brillantes colores naranja y blanco.",
-                habitat: "Arrecifes de coral e anémonas",
-                features: "Inmune al veneno de las anémonas gracias a su mucosa.",
-                diet: "Omnívoro"
-            }
+            // --- ACUÁTICOS ---
+            { name: "Delfín", category: "Acuáticos", image: "https://images.unsplash.com/photo-1570481662006-a3a1374699e8?auto=format&fit=crop&w=500&q=80", description: "Mamífero acuático altamente inteligente.", habitat: "Océanos y mares", features: "Comunicación mediante ecolocalización.", diet: "Piscívoro" },
+            { name: "Tiburón Blanco", category: "Acuáticos", image: "https://images.unsplash.com/photo-1560275619-4662e36fa65c?auto=format&fit=crop&w=500&q=80", description: "El depredador marino más emblemático.", habitat: "Aguas templadas", features: "Múltiples filas de dientes aserrados.", diet: "Carnívoro" },
+            { name: "Manta Raya", category: "Acuáticos", image: "https://capuchino.mx/wp-content/uploads/2022/12/Rayas-aguila.jpg", description: "Gigante pacífico del océano.", habitat: "Aguas tropicales", features: "Cuerpo aplanado con aletas gigantes.", diet: "Filtrador (plancton)" },
+            { name: "Pez Payaso", category: "Acuáticos", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXiO58aVTR0Gy-AGtmCNJJ-qn4luiqDNrk0Dmo0Gobdq98CKLCzK6tF_th&s=10", description: "Pequeño pez de colores naranja y blanco.", habitat: "Arrecifes e anémonas", features: "Inmune al veneno de las anémonas.", diet: "Omnívoro" }
         ];
-
-        // --- COMPONENTES ---
 
         function HomeComponent() {
             return `
@@ -459,10 +404,7 @@
 
         function AnimalsComponent(filter = "Todos") {
             const categories = ["Todos", "Mamíferos", "Aves", "Reptiles", "Acuáticos"];
-            
-            const filteredAnimals = filter === "Todos" 
-                ? animalsData 
-                : animalsData.filter(a => a.category === filter);
+            const filteredAnimals = filter === "Todos" ? animalsData : animalsData.filter(a => a.category === filter);
 
             const filterButtonsHTML = categories.map(cat => `
                 <button class="filter-btn ${cat === filter ? 'active' : ''}" onclick="filterAnimals('${cat}')">
@@ -472,7 +414,7 @@
 
             const cardsHTML = filteredAnimals.map(animal => `
                 <div class="card">
-                    <img src="${animal.image}" alt="${animal.name}">
+                    <img src="${animal.image}" alt="${animal.name}" loading="lazy">
                     <span class="badge">${animal.category}</span>
                     <h3>${animal.name}</h3>
                     <p><strong>Descripción:</strong> ${animal.description}</p>
@@ -550,15 +492,15 @@
                     <div class="grid">
                         <div class="card">
                             <h3>🛡️ Protección de Especies</h3>
-                            <p>Participamos en programas internacionales de reproducción en cautiverio para reintroducir especies en peligro.</p>
+                            <p>Participamos en programas internacionales de reproducción en cautiverio.</p>
                         </div>
                         <div class="card">
                             <h3>🌍 Cuidado del Medio Ambiente</h3>
-                            <p>EcoZoo funciona con un 100% de energía renovable y aplica programas de cero residuos de plástico.</p>
+                            <p>EcoZoo funciona con un 100% de energía renovable y cero plásticos.</p>
                         </div>
                         <div class="card">
                             <h3>📚 Programas Educativos</h3>
-                            <p>Ofrecemos voluntariados, campamentos de verano y conferencias gratuitas sobre la fauna silvestre.</p>
+                            <p>Ofrecemos voluntariados, campamentos de verano y conferencias gratuitas.</p>
                         </div>
                     </div>
 
@@ -614,58 +556,36 @@
                             <br>
                             <h4>Redes Sociales</h4>
                             <p>Síguenos en @EcoZooOficial en todas las plataformas.</p>
-                            <br>
                         </div>
                     </div>
                 </section>
             `;
         }
 
-        // --- SISTEMA DE ENRUTAMIENTO Y NAVEGACIÓN ---
-
         function navigate(view) {
             const app = document.getElementById("app-content");
-            
             switch (view) {
-                case "home":
-                    app.innerHTML = HomeComponent();
-                    break;
-                case "animals":
-                    app.innerHTML = AnimalsComponent();
-                    break;
-                case "services":
-                    app.innerHTML = ServicesComponent();
-                    break;
-                case "education":
-                    app.innerHTML = EducationComponent();
-                    break;
-                case "contact":
-                    app.innerHTML = ContactComponent();
-                    break;
-                default:
-                    app.innerHTML = HomeComponent();
+                case "home": app.innerHTML = HomeComponent(); break;
+                case "animals": app.innerHTML = AnimalsComponent(); break;
+                case "services": app.innerHTML = ServicesComponent(); break;
+                case "education": app.innerHTML = EducationComponent(); break;
+                case "contact": app.innerHTML = ContactComponent(); break;
+                default: app.innerHTML = HomeComponent();
             }
-            
             window.scrollTo(0, 0);
         }
 
-        // Función auxiliar para filtrar animales
         function filterAnimals(category) {
-            const app = document.getElementById("app-content");
-            app.innerHTML = AnimalsComponent(category);
+            document.getElementById("app-content").innerHTML = AnimalsComponent(category);
         }
 
-        // Manejo del formulario de contacto
         function handleContactSubmit(event) {
             event.preventDefault();
             alert("¡Gracias por contactarnos! Te responderemos a la brevedad.");
             event.target.reset();
         }
 
-        // Inicializar la aplicación en la pantalla de inicio
-        document.addEventListener("DOMContentLoaded", () => {
-            navigate("home");
-        });
+        document.addEventListener("DOMContentLoaded", () => navigate("home"));
     </script>
 </body>
 </html>
