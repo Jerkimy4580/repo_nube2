@@ -3,589 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoZoo - Naturaleza Viva</title>
+    <title>Apex Fitness - Centro de Información y Entrenamiento</title>
     <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-card-hover: #282828;
+            --primary: #00e676;
+            --primary-dark: #00a854;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #333333;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
         }
 
-        /* Header & Nav Responsive */
-        .header {
-            background-color: #1b4332;
-            color: white;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        header {
+            background-color: #0a0a0a;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-        }
-
-        .logo-text {
-            font-size: 1.4rem;
-        }
-
-        .logo-text span {
-            font-size: 0.8rem;
-            display: block;
-            color: #52b788;
-        }
-
-        nav {
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: #52b788;
-        }
-
-        /* Main Container */
-        main {
-            flex: 1;
-        }
-
-        /* Banner Responsive */
-        .hero-banner {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80') center/cover;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero-banner h2 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero-banner p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-        }
-
-        .hero-buttons {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            width: auto;
-        }
-
-        .btn-primary {
-            background-color: #2d6a4f;
-            color: white;
-        }
-
-        .btn-secondary {
-            background-color: #d8f3dc;
-            color: #1b4332;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Sections General */
-        .section {
-            padding: 40px 20px;
+        .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(18,18,18,1) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            text-align: center;
-            color: #1b4332;
-            margin-bottom: 30px;
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
         }
 
-        /* Cards & Grid Responsive */
-        .grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 6px;
-            margin-bottom: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
-        .badge {
-            display: inline-block;
-            align-self: flex-start;
-            background: #d8f3dc;
-            color: #1b4332;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .card:hover {
+            background-color: var(--bg-card-hover);
+            transform: translateY(-3px);
         }
 
-        /* Categorías Filtro Responsive */
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
         }
 
-        .filter-btn {
-            padding: 8px 16px;
-            border: 1px solid #2d6a4f;
-            background: white;
-            color: #2d6a4f;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            white-space: nowrap;
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: #2d6a4f;
-            color: white;
+        /* Tabla de rutinas */
+        .table-container {
+            overflow-x: auto;
         }
 
-        /* Forms & Tables */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        form input, form textarea {
+        table {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #252525;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Herramienta Interactiva */
+        .interactive-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #121212;
+            border: 1px solid var(--border);
             border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
         }
 
-        .info-box {
-            background: #e9f5ec;
-            padding: 20px;
-            border-radius: 8px;
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
-        /* Footer */
-        .footer {
-            background: #081c15;
-            color: white;
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #000000;
+            font-weight: 700;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #121212;
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+
+        .result-box h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .result-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background-color: #0a0a0a;
+            border-top: 1px solid var(--border);
+            padding: 2rem;
             text-align: center;
-            padding: 20px;
-            margin-top: auto;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        .social-links {
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            color: #52b788;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-        /* MEDIA QUERIES PARA ADAPTABILIDAD TOTAL */
         @media (max-width: 768px) {
-            .header {
+            .header-container {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1rem;
+                gap: 1rem;
             }
-
-            .nav-links {
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-banner {
-                padding: 60px 15px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-filter {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-
-            .section {
-                padding: 25px 15px;
+            
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
-    <header class="header">
-        <div class="logo-container">
-            <span class="logo-icon">🌿</span>
-            <h1 class="logo-text">EcoZooPuce <span>Naturaleza Viva</span></h1>
+    <header>
+        <div class="header-container">
+            <div class="logo">Apex Fitness</div>
+            <nav>
+                <ul>
+                    <li><a href="#principios">Principios</a></li>
+                    <li><a href="#rutinas">Rutinas</a></li>
+                    <li><a href="#ejercicios">Ejercicios</a></li>
+                    <li><a href="#calculadora">Calculadora</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#" onclick="navigate('home')">Inicio</a></li>
-                <li><a href="#" onclick="navigate('animals')">Animales</a></li>
-                <li><a href="#" onclick="navigate('services')">Servicios</a></li>
-                <li><a href="#" onclick="navigate('education')">Educación</a></li>
-                <li><a href="#" onclick="navigate('contact')">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Contenedor Principal -->
-    <main id="app-content"></main>
+    <div class="hero">
+        <h1>Guía de Entrenamiento e Hipertrofia</h1>
+        <p>Bases científicas y herramientas prácticas para optimizar el desarrollo muscular y la fuerza.</p>
+    </div>
 
-    <!-- Pie de página -->
-    <footer class="footer">
-        <p>&copy; 2026 EcoZoo Naturaleza Viva - Todos los derechos reservados.</p>
-        <div class="social-links">
-            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">TikTok</a>
-        </div>
+    <div class="container">
+
+        <!-- Principios Fundamentales -->
+        <section id="principios">
+            <h2 class="section-title">Principios de Entrenamiento</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Sobrecarga Progresiva</h3>
+                    <p>Incremento gradual del esfuerzo requerido sobre el sistema neuromuscular. Puede lograrse aumentando la carga, las repeticiones, las series o mejorando el control técnico.</p>
+                </div>
+                <div class="card">
+                    <h3>Volumen de Trabajo</h3>
+                    <p>Cantidad total de trabajo realizado, expresado generalmente en series efectivas semanales por grupo muscular. El rango óptimo suele ubicarse entre 10 y 20 series semanales.</p>
+                </div>
+                <div class="card">
+                    <h3>Intensidad y RIR</h3>
+                    <p>Grado de esfuerzo medido en relación al fallo muscular. Se utiliza la escala RIR (Repeticiones en Recámara). Para hipertrofia se recomienda trabajar en un RIR 1-3.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rutinas -->
+        <section id="rutinas">
+            <h2 class="section-title">Distribuciones de Entrenamiento</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estructura</th>
+                            <th>Frecuencia Recomendada</th>
+                            <th>Distribución Tipo</th>
+                            <th>Perfil Objetivo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Torso / Pierna</strong></td>
+                            <td>4 días por semana</td>
+                            <td>Lunes: Torso | Martes: Pierna | Jueves: Torso | Viernes: Pierna</td>
+                            <td>Intermedios que buscan equilibrio entre volumen y recuperación.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Empuje / Tirón / Pierna</strong></td>
+                            <td>3 a 6 días por semana</td>
+                            <td>Día 1: Empuje | Día 2: Tirón | Día 3: Pierna</td>
+                            <td>Atletas con mayor disponibilidad de tiempo y experiencia.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cuerpo Completo (Full Body)</strong></td>
+                            <td>3 días por semana</td>
+                            <td>Lunes: Full Body | Miércoles: Full Body | Viernes: Full Body</td>
+                            <td>Principiantes o personas con tiempo limitado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Ejercicios Clave -->
+        <section id="ejercicios">
+            <h2 class="section-title">Selección de Ejercicios</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Empuje</h3>
+                    <p><strong>Pecho, Hombro anterior, Tríceps:</strong> Press plano con barra, Press inclinado con mancuernas, Fondos en paralelas, Press militar, Extensiones en polea.</p>
+                </div>
+                <div class="card">
+                    <h3>Tirón</h3>
+                    <p><strong>Espalda, Hombro posterior, Bíceps:</strong> Dominadas, Remo con barra, Jalón al pecho, Remo en polea baja, Curl de bíceps con barra.</p>
+                </div>
+                <div class="card">
+                    <h3>Pierna</h3>
+                    <p><strong>Cuádriceps, Isquiosurales, Glúteos:</strong> Sentadilla trasera, Prensa inclinado, Peso muerto rumano, Zancadas, Elevación de talones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculadora Interactiva JS -->
+        <section id="calculadora">
+            <h2 class="section-title">Calculadora de Volúmenes Estimados</h2>
+            <div class="interactive-box">
+                <div class="form-group">
+                    <label for="nivel">Nivel de Experiencia:</label>
+                    <select id="nivel">
+                        <option value="principiante">Principiante (0 - 1 año)</option>
+                        <option value="intermedio">Intermedio (1 - 3 años)</option>
+                        <option value="avanzado">Avanzado (3+ años)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dias">Días Disponibles por Semana:</label>
+                    <input type="number" id="dias" min="2" max="6" value="4">
+                </div>
+                <button class="btn" onclick="calcularRecomendacion()">Calcular Recomendación</button>
+
+                <div id="resultado" class="result-box">
+                    <h4 id="res-titulo">Recomendación Personalizada</h4>
+                    <p id="res-volumen"></p>
+                    <p id="res-frecuencia"></p>
+                    <p id="res-rutina"></p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Apex Fitness - Documento de Información Técnica sobre Entrenamiento Deportivo.</p>
     </footer>
 
-    <!-- Lógica JavaScript -->
     <script>
-        const animalsData = [
-            // --- MAMÍFEROS ---
-            { name: "León", category: "Mamíferos", image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=500&q=80", description: "El gran felino conocido como el rey de la selva.", habitat: "Sabana africana", features: "Melena densa en machos, caza social en manada.", diet: "Carnívoro" },
-            { name: "Elefante", category: "Mamíferos", image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=500&q=80", description: "El mamífero terrestre más grande del mundo.", habitat: "Bosques y sabanas", features: "Trompa multifuncional y colmillos de marfil.", diet: "Herbívoro" },
-            { name: "Jirafa", category: "Mamíferos", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?auto=format&fit=crop&w=500&q=80", description: "El animal más alto de la Tierra.", habitat: "Praderas africanas", features: "Cuello extremadamente largo y patrón único de manchas.", diet: "Herbívoro" },
-            { name: "Tigre", category: "Mamíferos", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=500&q=80", description: "Superdepredador de pelaje anaranjado con rayas negras.", habitat: "Bosques densos y selvas", features: "Excelente nadador y cazador solitario.", diet: "Carnívoro" },
+        function calcularRecomendacion() {
+            const nivel = document.getElementById('nivel').value;
+            const dias = parseInt(document.getElementById('dias').value);
+            const resultadoBox = document.getElementById('resultado');
+            
+            const resVolumen = document.getElementById('res-volumen');
+            const resFrecuencia = document.getElementById('res-frecuencia');
+            const resRutina = document.getElementById('res-rutina');
 
-            // --- AVES ---
-            { name: "Águila Real", category: "Aves", image: "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?auto=format&fit=crop&w=500&q=80", description: "Una de las aves de presa más impresionantes.", habitat: "Montañas y acantilados", features: "Visión agudísima y garras poderosas.", diet: "Carnívoro" },
-            { name: "Flamenco", category: "Aves", image: "https://media.istockphoto.com/id/616135474/es/foto/flamencos-en-el-lago-kenia-%C3%A1frica.jpg?s=1024x1024&w=is&k=20&c=2FgWJEaiQrLtqUEnGoTApNV8_yaD_qby12whD1tjdEQ=", description: "Ave acuática conocida por su característico color rosado.", habitat: "Lagos salobres y humedales", features: "Pico curvo adaptado para filtrar alimento.", diet: "Filtrador (crustáceos y algas)" },
-            { name: "Búho Real", category: "Aves", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj7sPccjR10nmkMZvCb_onGtCEtmnQEAyW1rAqVtKbVkhAzYL9bXKyUQQ&s=10", description: "Rapaz nocturna de mirada penetrante.", habitat: "Bosques y zonas rocosas", features: "Vuelo totalmente silencioso.", diet: "Carnívoro" },
-            { name: "Tucán", category: "Aves", image: "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?auto=format&fit=crop&w=500&q=80", description: "Ave tropical famosa por su pico largo y colorido.", habitat: "Selvas tropicales", features: "Pico ligero de queratina y plumaje vivo.", diet: "Frugívoro" },
-
-            // --- REPTILES ---
-            { name: "Tortuga Marina", category: "Reptiles", image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=500&q=80", description: "Reptil ancestral que migra miles de kilómetros.", habitat: "Arrecifes y océanos abiertos", features: "Caparazón hidrodinámico y grandes aletas.", diet: "Omnívoro" },
-            { name: "Cocodrilo", category: "Reptiles", image: "https://images.unsplash.com/photo-1525382455947-f319bc05fb35?auto=format&fit=crop&w=500&q=80", description: "Gran reptil semiacuático con mordida poderosa.", habitat: "Ríos, pantanos y zonas costeras", features: "Piel escamosa y dura.", diet: "Carnívoro" },
-            { name: "Camaleón", category: "Reptiles", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdPAr5eUlrF9iF5v1S5VuKDE10gj6QJ-7Mel7P57ONORE5n7nhSM49_76O&s=10", description: "Reptil famoso por cambiar de color.", habitat: "Bosques tropicales", features: "Ojos con movimiento independiente.", diet: "Insectívoro" },
-            { name: "Iguana Verde", category: "Reptiles", image: "https://www.shutterstock.com/image-photo/young-green-iguana-perched-on-260nw-2700496977.jpg", description: "Gran lagarto arborícola nativo de América.", habitat: "Copas de los árboles cerca del agua", features: "Cresta dorsal de espinas y cola larga.", diet: "Herbívoro" },
-
-            // --- ACUÁTICOS ---
-            { name: "Delfín", category: "Acuáticos", image: "https://images.unsplash.com/photo-1570481662006-a3a1374699e8?auto=format&fit=crop&w=500&q=80", description: "Mamífero acuático altamente inteligente.", habitat: "Océanos y mares", features: "Comunicación mediante ecolocalización.", diet: "Piscívoro" },
-            { name: "Tiburón Blanco", category: "Acuáticos", image: "https://images.unsplash.com/photo-1560275619-4662e36fa65c?auto=format&fit=crop&w=500&q=80", description: "El depredador marino más emblemático.", habitat: "Aguas templadas", features: "Múltiples filas de dientes aserrados.", diet: "Carnívoro" },
-            { name: "Manta Raya", category: "Acuáticos", image: "https://capuchino.mx/wp-content/uploads/2022/12/Rayas-aguila.jpg", description: "Gigante pacífico del océano.", habitat: "Aguas tropicales", features: "Cuerpo aplanado con aletas gigantes.", diet: "Filtrador (plancton)" },
-            { name: "Pez Payaso", category: "Acuáticos", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXiO58aVTR0Gy-AGtmCNJJ-qn4luiqDNrk0Dmo0Gobdq98CKLCzK6tF_th&s=10", description: "Pequeño pez de colores naranja y blanco.", habitat: "Arrecifes e anémonas", features: "Inmune al veneno de las anémonas.", diet: "Omnívoro" }
-        ];
-
-        function HomeComponent() {
-            return `
-                <section class="hero-banner">
-                    <h2>Un encuentro salvaje con la naturaleza</h2>
-                    <p>Descubre la biodiversidad y aprende a proteger nuestro planeta.</p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" onclick="navigate('animals')">Ver Animales</button>
-                        <button class="btn btn-secondary" onclick="navigate('services')">Planear Visita</button>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h3 class="section-title">Sobre EcoZoo</h3>
-                    <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto; line-height: 1.6;">
-                        EcoZoo es un santuario biológico comprometido con el rescate, rehabilitación y conservación 
-                        de especies amenazadas. Con más de 50 hectáreas de hábitats recreados, ofrecemos una experiencia
-                        educativa e inmersiva para toda la familia.
-                    </p>
-
-                    <h3 class="section-title">Información Destacada</h3>
-                    <div class="grid">
-                        <div class="card">
-                            <h4>🌱 Programa de Conservación</h4>
-                            <p>Más de 30 especies rescatadas y reintegradas a sus hábitats naturales este año.</p>
-                        </div>
-                        <div class="card">
-                            <h4>🦁 Experiencias Interactivas</h4>
-                            <p>Recorridos guiados al atardecer para conocer el comportamiento nocturno de los grandes felinos.</p>
-                        </div>
-                        <div class="card">
-                            <h4>🎟️ Descuentos Especiales</h4>
-                            <p>Entrada gratuita para niños menores de 3 años y tarifas reducidas para grupos escolares.</p>
-                        </div>
-                    </div>
-                </section>
-            `;
-        }
-
-        function AnimalsComponent(filter = "Todos") {
-            const categories = ["Todos", "Mamíferos", "Aves", "Reptiles", "Acuáticos"];
-            const filteredAnimals = filter === "Todos" ? animalsData : animalsData.filter(a => a.category === filter);
-
-            const filterButtonsHTML = categories.map(cat => `
-                <button class="filter-btn ${cat === filter ? 'active' : ''}" onclick="filterAnimals('${cat}')">
-                    ${cat}
-                </button>
-            `).join('');
-
-            const cardsHTML = filteredAnimals.map(animal => `
-                <div class="card">
-                    <img src="${animal.image}" alt="${animal.name}" loading="lazy">
-                    <span class="badge">${animal.category}</span>
-                    <h3>${animal.name}</h3>
-                    <p><strong>Descripción:</strong> ${animal.description}</p>
-                    <p><strong>Hábitat:</strong> ${animal.habitat}</p>
-                    <p><strong>Características:</strong> ${animal.features}</p>
-                    <p><strong>Alimentación:</strong> ${animal.diet}</p>
-                </div>
-            `).join('');
-
-            return `
-                <section class="section">
-                    <h2 class="section-title">Nuestros Animales</h2>
-                    <div class="category-filter">
-                        ${filterButtonsHTML}
-                    </div>
-                    <div class="grid">
-                        ${cardsHTML}
-                    </div>
-                </section>
-            `;
-        }
-
-        function ServicesComponent() {
-            return `
-                <section class="section">
-                    <h2 class="section-title">Servicios para Visitantes</h2>
-                    <div class="grid">
-                        <div class="card">
-                            <h3>🚶‍♂️ Visitas Guiadas</h3>
-                            <p>Acompaña a nuestros biólogos en recorridos temáticos de 90 minutos.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🎓 Recorridos Educativos</h3>
-                            <p>Diseñados para escuelas, enfocados en biología, ecología y preservación.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🍔 Zona de Alimentación</h3>
-                            <p>Restaurantes y áreas de picnic con opciones saludables y vegetarianas.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🎁 Tienda de Recuerdos</h3>
-                            <p>Adquiere souvenirs ecológicos; tus compras apoyan la conservación.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🎉 Eventos Especiales</h3>
-                            <p>Celebración de cumpleaños y eventos corporativos en espacios al aire libre.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🎈 Actividades para Niños</h3>
-                            <p>Talleres de arte, granja interactiva y zonas de juegos infantiles.</p>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 40px;" class="grid">
-                        <div class="info-box">
-                            <h3>⏰ Horarios de Atención</h3>
-                            <p><strong>Lunes a Viernes:</strong> 9:00 AM - 5:00 PM</p>
-                            <p><strong>Sábados, Domingos y Festivos:</strong> 8:30 AM - 6:00 PM</p>
-                        </div>
-                        <div class="info-box">
-                            <h3>🎟️ Precios de Entrada</h3>
-                            <p><strong>Adultos (12+ años):</strong> $15.00</p>
-                            <p><strong>Niños (3-11 años):</strong> $8.00</p>
-                            <p><strong>Adultos Mayores / Estudiantes:</strong> $10.00</p>
-                        </div>
-                    </div>
-                </section>
-            `;
-        }
-
-        function EducationComponent() {
-            return `
-                <section class="section">
-                    <h2 class="section-title">Educación y Conservación</h2>
-                    <div class="grid">
-                        <div class="card">
-                            <h3>🛡️ Protección de Especies</h3>
-                            <p>Participamos en programas internacionales de reproducción en cautiverio.</p>
-                        </div>
-                        <div class="card">
-                            <h3>🌍 Cuidado del Medio Ambiente</h3>
-                            <p>EcoZoo funciona con un 100% de energía renovable y cero plásticos.</p>
-                        </div>
-                        <div class="card">
-                            <h3>📚 Programas Educativos</h3>
-                            <p>Ofrecemos voluntariados, campamentos de verano y conferencias gratuitas.</p>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 40px;">
-                        <h3 class="section-title">💡 Datos Interesantes & Consejos</h3>
-                        <div class="grid">
-                            <div class="info-box">
-                                <h4>¿Sabías qué?</h4>
-                                <p>Las huellas de la nariz de las jirafas son únicas, equivalente a las huellas dactilares humanas.</p>
-                            </div>
-                            <div class="info-box">
-                                <h4>Consejo Eco</h4>
-                                <p>Reduce el uso de plásticos de un solo uso para evitar la contaminación de mares y hábitats terrestres.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `;
-        }
-
-        function ContactComponent() {
-            return `
-                <section class="section">
-                    <h2 class="section-title">Contacto y Ubicación</h2>
-                    <div class="contact-container">
-                        <form onsubmit="handleContactSubmit(event)">
-                            <h3>Envíanos un mensaje</h3>
-                            <div>
-                                <label>Nombre:</label>
-                                <input type="text" required placeholder="Tu nombre completo">
-                            </div>
-                            <div>
-                                <label>Correo Electrónico:</label>
-                                <input type="email" required placeholder="tu@email.com">
-                            </div>
-                            <div>
-                                <label>Teléfono:</label>
-                                <input type="tel" placeholder="(+593) 999999999">
-                            </div>
-                            <div>
-                                <label>Mensaje:</label>
-                                <textarea rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                        </form>
-
-                        <div class="info-box">
-                            <h3>Información del Zoológico</h3>
-                            <p><strong>📍 Dirección:</strong> Av. Los Biomas #123, Reserva Ecología Verde</p>
-                            <p><strong>🕒 Horarios:</strong> Lun-Dom 9:00 AM - 5:00 PM</p>
-                            <p><strong>📞 Teléfono:</strong> (02) 2345-6789</p>
-                            <p><strong>✉️ Email:</strong> contacto@ecozoo.org</p>
-                            <br>
-                            <h4>Redes Sociales</h4>
-                            <p>Síguenos en @EcoZooOficial en todas las plataformas.</p>
-                        </div>
-                    </div>
-                </section>
-            `;
-        }
-
-        function navigate(view) {
-            const app = document.getElementById("app-content");
-            switch (view) {
-                case "home": app.innerHTML = HomeComponent(); break;
-                case "animals": app.innerHTML = AnimalsComponent(); break;
-                case "services": app.innerHTML = ServicesComponent(); break;
-                case "education": app.innerHTML = EducationComponent(); break;
-                case "contact": app.innerHTML = ContactComponent(); break;
-                default: app.innerHTML = HomeComponent();
+            if (isNaN(dias) || dias < 2 || dias > 6) {
+                alert('Por favor, ingresa un número de días válido entre 2 y 6.');
+                return;
             }
-            window.scrollTo(0, 0);
-        }
 
-        function filterAnimals(category) {
-            document.getElementById("app-content").innerHTML = AnimalsComponent(category);
-        }
+            let volumenText = '';
+            let frecuenciaText = '';
+            let rutinaText = '';
 
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            alert("¡Gracias por contactarnos! Te responderemos a la brevedad.");
-            event.target.reset();
-        }
+            // Asignación de volumen por nivel
+            if (nivel === 'principiante') {
+                volumenText = 'Volumen objetivo: 10 a 12 series efectivas por grupo muscular a la semana.';
+            } else if (nivel === 'intermedio') {
+                volumenText = 'Volumen objetivo: 12 a 16 series efectivas por grupo muscular a la semana.';
+            } else {
+                volumenText = 'Volumen objetivo: 16 a 20 series efectivas por grupo muscular a la semana.';
+            }
 
-        document.addEventListener("DOMContentLoaded", () => navigate("home"));
+            // Asignación de distribución según días y nivel
+            if (dias <= 3) {
+                frecuenciaText = 'Frecuencia recomendada: Frecuencia 2 o 3 (entrenar todo el cuerpo en cada sesión o alternar divididos).';
+                rutinaText = 'Estructura sugerida: Rutina Full Body (Cuerpo Completo).';
+            } else if (dias === 4) {
+                frecuenciaText = 'Frecuencia recomendada: Frecuencia 2 (cada grupo muscular trabajado 2 veces por semana).';
+                rutinaText = 'Estructura sugerida: Rutina Torso / Pierna.';
+            } else {
+                frecuenciaText = 'Frecuencia recomendada: Frecuencia 2 con volumen distribuido.';
+                rutinaText = 'Estructura sugerida: Empuje / Tirón / Pierna (PPL) o Torso / Pierna / Brazos.';
+            }
+
+            resVolumen.textContent = volumenText;
+            resFrecuencia.textContent = frecuenciaText;
+            resRutina.textContent = rutinaText;
+
+            resultadoBox.style.display = 'block';
+        }
     </script>
 </body>
 </html>
